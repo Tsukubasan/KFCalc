@@ -2,7 +2,7 @@
 var CACHE_NAME = 'kirafan-calc-cashe';
 var urlsToCache = [
     '/KFCalc/',
-    '/KFCalc/styles/bundle.css'
+    '/KFCalc/styles/bundle.css',
     '/KFCalc/script/bundle.js'
 ];
 
