@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles/bundle.css">
+    <title>きらファン計算機</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimal-ui">
+    <meta charset="utf-8" />
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="mdc-dialog" id="dialog-select-my-el" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <h2 class="mdc-dialog__title" id="my-dialog-title">
+                    攻撃者属性選択
+                </h2>
+                <div class="mdc-dialog__content" id="my-dialog-content">
+
+                    <div class="mdc-form-field">
+                        <div class="content-wrap" id="my-el-selector">
+                            <button class="mdc-button mdc-button--outlined item-3">火</button>
+                            <button class="mdc-button mdc-button--outlined item-3">水</button>
+                            <button class="mdc-button mdc-button--outlined item-3">土</button>
+                            <button class="mdc-button mdc-button--outlined item-3">風</button>
+                            <button class="mdc-button mdc-button--outlined item-3">月</button>
+                            <button class="mdc-button mdc-button--outlined item-3">陽</button>
+                        </div>
+                    </div>
+
+                </div>
+                <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+                        <span class="mdc-button__label">Ok</span>
+                    </button>
+                </footer>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+
+    <div class="mdc-dialog" id="dialog-enter-my-buf" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <h2 class="mdc-dialog__title" id="my-dialog-title">
+                    バフ・デバフ入力
+                </h2>
+                <div class="mdc-dialog__content">
+                    <ul class="mdc-list my-list" id="my-buf-list">
+                    </ul>
+                    <hr>
+                    <div class="container">
+                        <div class=" mdc-chip-set mdc-chip-set--choice" id="my-buf-type">
+                            <div class="mdc-chip" tabindex="0">
+                                <div class="mdc-chip__text">継続バフ</div>
+                            </div>
+                            <div class="mdc-chip" tabindex="0">
+                                <div class="mdc-chip__text">一度バフ</div>
+                            </div>
+                            <div class="mdc-chip" tabindex="0">
+                                <div class="mdc-chip__text">有利バフ</div>
+                            </div>
+
+                            <div class="mdc-chip" tabindex="0">
+                                <div class="mdc-chip__text">クリバフ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mdc-chip-set  mdc-chip-set--choice" id="my-buf-degree">
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">小</div>
+                        </div>
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">中</div>
+                        </div>
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">大</div>
+                        </div>
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">入力</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dialog-button-container">
+                        <div class="mdc-text-field mdc-text-field--outlined my-field dialog-text-filed" id="my-buf-skill-param">
+                            <input class="mdc-text-field__input" type="number">
+                            <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                    <label class="mdc-floating-label">スキルLv</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                        </div>
+
+                        <button class="mdc-button" id="my-buf-add" disabled>追加</button>
+                        <button class="mdc-button" id="my-buf-edit" disabled>編集</button>
+                    </div>
+
+                </div>
+                <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+                        <span class="mdc-button__label">OK</span>
+                    </button>
+                </footer>
+            </div>
+
+
+        </div>
+
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+
+    <div class="mdc-dialog" id="dialog-select-en-el" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <h2 class="mdc-dialog__title">
+                    敵属性選択
+                </h2>
+                <div class="mdc-dialog__content">
+
+                    <div class="mdc-form-field">
+                        <div class="content-wrap" id="en-el-selector">
+                            <button class="mdc-button mdc-button--outlined item-3">火</button>
+                            <button class="mdc-button mdc-button--outlined item-3">水</button>
+                            <button class="mdc-button mdc-button--outlined item-3">土</button>
+                            <button class="mdc-button mdc-button--outlined item-3">風</button>
+                            <button class="mdc-button mdc-button--outlined item-3">月</button>
+                            <button class="mdc-button mdc-button--outlined item-3">陽</button>
+                        </div>
+                    </div>
+
+                </div>
+                <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+                        <span class="mdc-button__label">Ok</span>
+                    </button>
+                </footer>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+
+    <div class="mdc-dialog" id="dialog-en-buf" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <h2 class="mdc-dialog__title" id="my-dialog-title">
+                    バフ・デバフ入力
+                </h2>
+                <div class="mdc-dialog__content" id="my-dialog-content">
+                    <div>
+                        <ul class="mdc-list my-list" id="en-buf-list">
+
+                        </ul>
+                    </div>
+
+
+                    <hr>
+                    <div class="mdc-chip-set  mdc-chip-set--choice" id="en-buf-type">
+                        <div class="mdc-chip" tabindex="0" id="el-chip">
+                            <div class="mdc-chip__text">属性デバフ</div>
+                        </div>
+
+                        <div class="mdc-chip" tabindex="0" id="def-chip">
+                            <div class="mdc-chip__text">防御デバフ</div>
+                        </div>
+
+
+                    </div>
+                    <hr>
+                    <div class="container anime-el-set" id="el-chip-set">
+                        <div class="mdc-chip-set mdc-chip-set--filter my-chip-set">
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">火</div>
+                            </div>
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">水</div>
+                            </div>
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">土</div>
+                            </div>
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">風</div>
+                            </div>
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">月</div>
+                            </div>
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">陽</div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container anime-def-type" id="def-chip-set">
+                        <div class="mdc-chip-set mdc-chip-set--filter my-chip-set">
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">DEF</div>
+                            </div>
+                            <div class="mdc-chip">
+                                <div class="mdc-chip__checkmark">
+                                    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                        <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                    </svg>
+                                </div>
+                                <div class="mdc-chip__text">MDF</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="mdc-chip-set  mdc-chip-set--choice" id="en-buf-degree">
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">小</div>
+                        </div>
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">中</div>
+                        </div>
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">大</div>
+                        </div>
+                        <div class="mdc-chip" tabindex="0">
+                            <div class="mdc-chip__text">入力</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dialog-button-container">
+                        <div class="mdc-text-field mdc-text-field--outlined my-field dialog-text-filed" id="en-buf-skill-param">
+                            <input class="mdc-text-field__input" type="number">
+                            <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                    <label class="mdc-floating-label " id="skill-lv">スキルLv</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                        </div>
+
+                        <button class="mdc-button" id="en-buf-add" disabled>追加</button>
+                        <button class="mdc-button" id="en-buf-edit" disabled>編集</button>
+                    </div>
+
+
+
+                </div>
+
+                <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+                        <span class="mdc-button__label">Ok</span>
+                    </button>
+                </footer>
+            </div>
+
+
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+
+    <div class="content-flex-column">
+        <label class="center">攻撃者</label>
+
+        <div class="container" id="atker-cards">
+            <div>
+                <div class="mdc-card my-card mdc-elevation--z4">
+                    <div class="card-container">
+                        <div class="content-wrap">
+                            <button class="mdc-button mdc-button--outlined item-3 atk-type">物理</button>
+                            <button class="mdc-button mdc-button--outlined item-3 ordinal">1st</button>
+                            <button class="mdc-button mdc-button--outlined item-3 critical">クリ</button>
+                        </div>
+
+                        <div class="content-wrap">
+                            <div class="mdc-text-field mdc-text-field--outlined my-field my-atk-field">
+                                <input class="mdc-text-field__input atk-param-input" type="number" min="0">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label atk-param">ATK</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+
+                            <div class="mdc-text-field mdc-text-field--outlined my-field my-skill-param-field">
+                                <input class="mdc-text-field__input skill-param-input" type="number" min="0">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label">SKILL</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-wrap my-buf-data">
+                            <div class="content-flex-column item-2">
+                                <label class="caption">継続バフ</label>
+                                <label class="line">0%</label>
+                            </div>
+                            <div class="content-flex-column item-2">
+                                <label class="caption">一度バフ</label>
+                                <label class="line">0%</label>
+                            </div>
+                            <div class="content-flex-column item-2">
+                                <label class="caption">有利属性バフ</label>
+                                <label class="line">0%</label>
+                            </div>
+                            <div class="content-flex-column item-2">
+                                <label class="caption">クリティカルバフ</label>
+                                <label class="line">0%</label>
+                            </div>
+
+                        </div>
+
+                        <div class="content-wrap">
+                            <button class="mdc-button mdc-button--outlined item-2 select-my-el">属性選択</button>
+                            <button class="mdc-button mdc-button--outlined item-2 my-buf-helper">バフ入力</button>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <div class="mdc-card my-card mdc-elevation--z4">
+                    <button type="button" class="mdc-button mdc-button--outlined center my-card-add">
+                        <span class="mdc-button__label">カード追加</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <label class="center">敵</label>
+
+        <div class="container" id="en-cards">
+            <div>
+                <div class="mdc-card my-card mdc-elevation--z4">
+                    <div class="card-container">
+                        <div class="content-wrap">
+
+                            <div class="mdc-text-field mdc-text-field--outlined my-field en-def-field">
+                                <input class="mdc-text-field__input def-param-input" type="number" min="0">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label" id="def-param">DEF</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+                            <div class="mdc-text-field mdc-text-field--outlined my-field en-mdf-field">
+                                <input class="mdc-text-field__input mdf-param-input" type="number" min="0">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label" id="def-param">MDF</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+                            <div class="mdc-text-field mdc-text-field--outlined my-field en-hp-field">
+                                <input class="mdc-text-field__input hp-param-input" type="number" min="0">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label">最大体力</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+                            <div class="mdc-text-field mdc-text-field--outlined my-field en-stun-cofe-field">
+                                <input class="mdc-text-field__input stun-cofe-input" type="number" min="0" step="0.01">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label">スタン係数</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="content-wrap en-buf-data">
+                            <div class="content-flex-column item-2">
+                                <label class="caption">属性耐性</label>
+                                <label class="line">0%</label>
+                            </div>
+                            <div class="content-flex-column item-2">
+                                <label class="caption">防御バフ</label>
+                                <label class="line">0%</label>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="content-wrap">
+                            <button class="mdc-button mdc-button--outlined item-2 select-en-el">属性選択</button>
+                            <button class="mdc-button mdc-button--outlined item-2 en-buf-helper">デバフ入力</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="mdc-card my-card mdc-elevation--z4">
+                    <button type="button" class="mdc-button mdc-button--outlined center en-card-add">
+                        <span class="mdc-button__label">カード追加</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdc-card my-card mdc-elevation--z4">
+            <div class="content-flex-column">
+                <label class="caption">ダメージ</label>
+                <label class="line" id="damage-result">0~0</label>
+            </div>
+            <div class="content-flex-column">
+                <label class="caption">スタンゲージ充填率</label>
+                <label class="line" id="stun-gauge">0%~0%</label>
+            </div>
+            <div class="content-flex-column">
+                <label class="caption">スタン必要ダメージ</label>
+                <label class="line" id="stun-damage">1</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/bundle.js" async></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service_worker.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+
+    </script>
+</body>
+
+</html>
