@@ -1,9 +1,9 @@
 // キャッシュファイルの指定
 var CACHE_NAME = 'kirafan-calc-cashe';
 var urlsToCache = [
-    '/KiraFanCalc/',
-    '/KiraFanCalc/styles/bundle.css'
-    '/KiraFanCalc/script/bundle.js'
+    '/KFCalc/',
+    '/KFCalc/styles/bundle.css'
+    '/KFCalc/script/bundle.js'
 ];
 
 // インストール処理
