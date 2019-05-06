@@ -1,5 +1,5 @@
 
-const CACHE_VERSION = '201905062034';
+const CACHE_VERSION = '201905062038';
 const CACHE_NAME = `${registration.scope}!${CACHE_VERSION}`;
 
 // キャッシュファイルの指定
@@ -10,7 +10,6 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
-    alert("UpdateCheck!!!");
   event.waitUntil(
     // キャッシュを開く
     caches.open(CACHE_NAME)
@@ -22,7 +21,6 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    alert("UpdateCheck!!");
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return cacheNames.filter((cacheName) => {
@@ -40,8 +38,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    alert("UpdateCheck!");
-    
   event.respondWith(
     caches.match(event.request)
     .then((response) => {
