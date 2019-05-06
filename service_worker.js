@@ -9,14 +9,16 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    // キャッシュを開く
-    caches.open(CACHE_NAME)
-    .then((cache) => {
-      // 指定されたファイルをキャッシュに追加する
-      return cache.addAll(urlsToCache);
-    })
-  );
+    event.waitUntil(self.skipWaiting());
+
+    event.waitUntil(
+        // キャッシュを開く
+        caches.open(CACHE_NAME)
+        .then((cache) => {
+            // 指定されたファイルをキャッシュに追加する
+            return cache.addAll(urlsToCache);
+        })
+    );
 });
 
 self.addEventListener('activate', (event) => {
