@@ -495,7 +495,7 @@
                 // 登録成功
                 console.log('ServiceWorker の登録に成功しました。スコープ: ', registration.scope);
                 registration.onupdatefound = function() {
-                    alert'アップデートがあります！');
+                    alert.(t'アップデートがあります！');
                     registration.update();
                 }
             }).catch(function(err) {
