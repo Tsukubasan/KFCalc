@@ -1,10 +1,10 @@
 
-const CACHE_VERSION = '201905062138';
+const CACHE_VERSION = '201905062358';
 const CACHE_NAME = `${registration.scope}!${CACHE_VERSION}`;
 
 // キャッシュファイルの指定
 var urlsToCache = [
-    '/KFCalc/',
+    '/KFCalc/index.html',
     '/KFCalc/styles/bundle.css',
     '/KFCalc/script/bundle.js'
 ];
