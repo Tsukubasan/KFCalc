@@ -1,4 +1,4 @@
-const CACHE_VERSION = '201905082313';
+const CACHE_VERSION = '201905090041';
 const CACHE_NAME = `${registration.scope}!${CACHE_VERSION}`;
 
 // キャッシュファイルの指定
