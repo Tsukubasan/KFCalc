@@ -10,3 +10,15 @@
 .yt_content {
 	margin: 30px;
 }
+
+.my_button {
+	border: none;
+	border-radius: 12px;
+	height: 48px;
+	width: 128px;
+	background-color: #efefef;
+}
+
+.my_button:hover {
+	background-color: #069;
+}

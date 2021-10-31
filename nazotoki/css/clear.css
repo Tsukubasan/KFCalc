@@ -30,6 +30,7 @@
 }
 
 .clear_content {
+	margin-top: 100px;
 	opacity: 0;
 	text-align: center;
 
@@ -37,8 +38,11 @@
 	transition-delay: 5.5s;
 }
 
-
-
 body {
-	background-color: black;
+	background-color: #121212;
+}
+
+.logo-img {
+	max-width: 480px;
+	width: 60vw;
 }
